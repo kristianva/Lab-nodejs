@@ -1,0 +1,73 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  h1 Endpoints for Team
+  h3 GET /team
+  p Returns all the member involved on the #{title}
+
+  h3 GET /team/member
+  p Returns the info related to the member. If the member doesn't exists the app returns a 404 error code.
+
+  h1 Endpoints for Students
+  h3 GET /students
+  p Returns a list of students. Each student has the follwing structure 
+  ul
+   li id: string. The id of the student
+   li name: string. The name of the student
+   li address: string. The student's address
+   li email: string. The student's email.
+
+  h3 POST /students/
+  p Creates a student. If success it returns a 201 HTTP code with a the id of the recently created resource as body. The body must be a valid JSON with the following structure.
+  ul
+   li name: string. The name of the student
+   li address: string. The student's address
+   li email: string. The student's email.
+
+  h3 PUT /students/
+  p Updates a student information. If success it returns a 200 HTTP code with. If the user is invalid it returns a 404 HTTP code. The body must be a valid JSON with the following structure.
+  ul
+   li id: string. The id of the student
+   li name: string. The name of the student
+   li address: string. The student's address
+   li email: string. The student's email.
+
+  h3 PATCH /students/
+  p Updates a student information. If success it returns a 200 HTTP code with. If the user is invalid it returns a 404 HTTP code. The body must be a valid JSON with the following structure.
+  ul
+   li id(required): string. The id of the student
+   li name(optional): string. The name of the student
+   li address(optional): string. The student's address
+   li email(optional): string. The student's email.
+
+  h3 DELETE /students/:student
+  p Deletes a student note from the records. The variable :student must be a valid user id. If the user is invalid it returns a 404 HTTP code. The body must be a valid JSON with the following structure.
+
+  h1 Endpoints for Notes
+  h3 GET /notes
+  p Returns a list of students and its notes. Each student has the follwing structure 
+  ul
+   li id: numeric. The id of the student
+   li note: numeric. The student's note
+
+  h3 GET /notes/:student
+  p Returns the note for the specified student. If the student doesn't exists it returns a 404 HTTP status code.
+
+  h3 POST /notes/:student
+  p Creates a note for the specified student. If the student doesn't exists it returns a 404 HTTP status code. If the student already has a note it returns a 400 HTTP status code. For creating the note, the body of the request should include a JSON with the following structure
+  ul
+   li note: numeric. The note of the student
+
+  h3 PUT /notes/:student
+  p Updates a note for a student. If the student doesn't exists it returns a 404 HTTP status code. If the student already has a note it returns a 400 HTTP status code. For creating the note, the body of the request should include a JSON with the following structure
+  ul
+   li note: numeric. The note of the student
+
+  h3 PATCH /notes/:student
+  p Updates the note for a student. If the student doesn't exists it returns a 404 HTTP status code. If the student already has a note it returns a 400 HTTP status code. For creating the note, the body of the request should include a JSON with the following structure
+  ul
+   li note: numeric. The note of the student
+
